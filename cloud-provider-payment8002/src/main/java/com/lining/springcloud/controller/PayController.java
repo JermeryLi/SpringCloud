@@ -22,23 +22,21 @@ public class PayController {
     private String serverPort;
 
     @PostMapping(value = "/payment/create")
-    public CommonResult create(@RequestBody Payment payment){
+    public CommonResult create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
-        log.info("*******插入payment:" + result);
-        if(result > 0){
+        if (result > 0) {
             return new CommonResult<>("200", "插入数据库成功, serverPort:" + serverPort, result);
-        }else{
+        } else {
             return new CommonResult<>("444", "插入数据库失败", null);
         }
     }
 
     @GetMapping(value = "/payment/get/{id}")
-    public CommonResult create(@PathVariable("id") Long id){
+    public CommonResult create(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
-        log.info("*******查询payment:" + payment);
-        if(payment != null){
+        if (payment != null) {
             return new CommonResult<>("200", "查询成功, serverPort:" + serverPort, payment);
-        }else{
+        } else {
             return new CommonResult<>("444", "查询失败，没有对应记录，查询id:" + id, null);
         }
     }
