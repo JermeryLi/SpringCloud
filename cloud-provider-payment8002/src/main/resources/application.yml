@@ -27,3 +27,7 @@ eureka:
   instance:
     instance-id: payment8002
     prefer-ip-address: true
+    #    客户端向服务端发送心跳的时间间隔 默认30s
+    lease-renewal-interval-in-seconds: 1
+    #    服务端在收到最后一次心跳后将的等待上限，默认90s,将服务剔除。
+    lease-expiration-duration-in-seconds: 2
